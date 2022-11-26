@@ -12,7 +12,9 @@ export const Header = () => {
       <Container>
         <HeaderWrapper>
           <LinkWrapper>
-            <NavLinkStyled to="/">Home</NavLinkStyled>
+            <NavLinkStyled to="/" end>
+              Home
+            </NavLinkStyled>
             <NavLinkStyled to="/movies">Movies</NavLinkStyled>
           </LinkWrapper>
         </HeaderWrapper>
