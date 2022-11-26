@@ -36,7 +36,7 @@ const Cast = () => {
           character={character}
           profile_path={profile_path}
         />
-      )) && <p>We don't have any cast information for this movie</p>}
+      )) ?? <p>We don't have any cast information for this movie</p>}
     </Grid>
   );
 };
