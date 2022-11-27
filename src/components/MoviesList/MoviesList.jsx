@@ -11,7 +11,7 @@ export const MovieList = ({ movies }) => {
     <Grid>
       {movies.map(({ id, title, poster_path }) => (
         <GridItem key={id}>
-          <MovieTitle to={`movies/${id}`} state={{ from: location }}>
+          <MovieTitle to={`/movies/${id}`} state={{ from: location }}>
             <img
               src={
                 poster_path ? imgSrc(200, poster_path) : blankPhoto(200, 300)

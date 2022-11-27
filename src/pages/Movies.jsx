@@ -1,16 +1,13 @@
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { useState, useEffect } from 'react';
 import { searchMovies } from 'services/api';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
-import { Grid, GridItem, StyledLink } from 'components/App.styled';
-import { blankPhoto, imgSrc } from 'components/SharedLayout';
+import { MovieList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const location = useLocation();
 
   const movieTitle = searchParams.get('query') ?? '';
 
@@ -46,25 +43,7 @@ const Movies = () => {
   return (
     <section>
       <SearchForm onSubmitForm={updateQueryString} />
-      {movies?.length !== 0 && (
-        <Grid>
-          {movies?.map(({ id, title, poster_path }) => (
-            <GridItem key={id}>
-              <StyledLink to={`${id}`} state={{ from: location }}>
-                <img
-                  src={
-                    poster_path
-                      ? imgSrc(200, poster_path)
-                      : blankPhoto(200, 300)
-                  }
-                  alt=""
-                />
-                {title}
-              </StyledLink>
-            </GridItem>
-          ))}
-        </Grid>
-      )}
+      {movies?.length > 0 && <MovieList movies={movies} />}
     </section>
   );
 };
